@@ -1,3 +1,4 @@
+/* eslint-disable prefer-template */
 import React from "react";
 import Svg from "../../../components/Svg/Svg";
 import { SvgProps } from "../../../components/Svg/types";
@@ -13,7 +14,11 @@ const Logo: React.FC<LogoProps> = ({ isDark, ...props }) => {
       <image
         width="205"
         height="26"
-        href={isDark ? "/images/egg/LogoTextNewDark.png" : "/images/egg/LogoTextNewWhite.png"}
+        href={
+          isDark
+            ? process.env.PUBLIC_URL + "/images/egg/LogoTextNewDark.png"
+            : process.env.PUBLIC_URL + "/images/egg/LogoTextNewWhite.png"
+        }
       />
     </Svg>
   );
