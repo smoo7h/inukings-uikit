@@ -713,7 +713,7 @@ const Icon$q = function (props) {
     React.createElement("image", {
       width: "32",
       height: "32",
-      href: `${process.env.PUBLIC_URL}/daytona.finance/images/egg/logo.png`,
+      href: process.env.PUBLIC_URL + "/images/egg/LogoTextNewDark.png",
     })
   );
 };
