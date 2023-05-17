@@ -710,7 +710,11 @@ const Icon$q = function (props) {
   return React.createElement(
     Svg,
     { viewBox: "0 0 32 32", ...props },
-    React.createElement("image", { width: "32", height: "32", href: `${process.env.PUBLIC_URL}/images/egg/logo.png` })
+    React.createElement("image", {
+      width: "32",
+      height: "32",
+      href: `${process.env.PUBLIC_URL}/daytona.finance/images/egg/logo.png`,
+    })
   );
 };
 
