@@ -2217,7 +2217,7 @@ var socials = [
         items: [
             {
                 label: "English",
-                href: "https://t.me/DaytonaFinance",
+                href: "https://t.me/+SCR4rpp7ipo0YmU5",
             },
         ],
     },
