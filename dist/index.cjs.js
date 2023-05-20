@@ -2210,7 +2210,7 @@ var links = [
             // },
             {
                 label: "Github",
-                href: "https://github.com/inukings/",
+                href: "https://github.com/Daytona-Finance/",
             },
             {
                 label: "Docs",
@@ -2230,14 +2230,14 @@ var socials = [
         items: [
             {
                 label: "English",
-                href: "https://t.me/inukings",
+                href: "https://t.me/Daytona-Finance",
             },
         ],
     },
     {
         label: "Twitter",
         icon: "TwitterIcon",
-        href: "https://twitter.com/inukings",
+        href: "https://twitter.com/Daytona-Finance",
     },
 ];
 var MENU_HEIGHT = 64;
