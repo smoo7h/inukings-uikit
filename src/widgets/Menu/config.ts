@@ -120,14 +120,14 @@ export const socials = [
     items: [
       {
         label: "English",
-        href: "https://t.me/Daytona-Finance",
+        href: "https://t.me/DaytonaFinance",
       },
     ],
   },
   {
     label: "Twitter",
     icon: "TwitterIcon",
-    href: "https://twitter.com/Daytona-Finance",
+    href: "https://twitter.com/DaytonaFinance",
   },
 ];
 
