@@ -3,7 +3,7 @@ import MathWallet from "./icons/MathWallet";
 import TokenPocket from "./icons/TokenPocket";
 import TrustWallet from "./icons/TrustWallet";
 import WalletConnect from "./icons/WalletConnect";
-import BinanceChain from "./icons/BinanceChain";
+import Rabby from "./icons/Rabby";
 import { Config } from "./types";
 
 const connectors: Config[] = [
@@ -13,18 +13,8 @@ const connectors: Config[] = [
     connectorId: "injected",
   },
   {
-    title: "TrustWallet",
-    icon: TrustWallet,
-    connectorId: "injected",
-  },
-  {
-    title: "MathWallet",
-    icon: MathWallet,
-    connectorId: "injected",
-  },
-  {
-    title: "TokenPocket",
-    icon: TokenPocket,
+    title: "Rabby",
+    icon: Rabby,
     connectorId: "injected",
   },
   {
@@ -33,9 +23,9 @@ const connectors: Config[] = [
     connectorId: "walletconnect",
   },
   {
-    title: "Binance Chain Wallet",
-    icon: BinanceChain,
-    connectorId: "bsc",
+    title: "Other Wallet",
+    icon: MathWallet,
+    connectorId: "injected",
   },
 ];
 
