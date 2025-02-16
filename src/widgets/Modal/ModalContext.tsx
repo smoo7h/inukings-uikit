@@ -28,7 +28,11 @@ export const Context = createContext<ModalsContext>({
   setCloseOnOverlayClick: () => true,
 });
 
-const ModalProvider: React.FC = ({ children }) => {
+type ModalProviderProps = {
+  children: React.ReactNode;
+};
+
+export const ModalProvider: React.FC<ModalProviderProps> = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [modalNode, setModalNode] = useState<React.ReactNode>();
   const [closeOnOverlayClick, setCloseOnOverlayClick] = useState(true);
@@ -61,7 +65,7 @@ const ModalProvider: React.FC = ({ children }) => {
         <ModalWrapper>
           <Overlay show onClick={handleOverlayDismiss} />
           {React.isValidElement(modalNode) &&
-            React.cloneElement(modalNode, {
+            React.cloneElement(modalNode as React.ReactElement<any>, {
               onDismiss: handleDismiss,
             })}
         </ModalWrapper>

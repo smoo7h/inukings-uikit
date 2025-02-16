@@ -11,6 +11,7 @@ interface Props extends InjectedProps {
   hideCloseButton?: boolean;
   onBack?: () => void;
   bodyPadding?: string;
+  children?: React.ReactNode; // added children prop
 }
 
 const StyledModal = styled.div`
