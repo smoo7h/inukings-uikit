@@ -1,0 +1,80 @@
+# InuKings UI Kit: Project Rules & Patterns
+
+This document captures key project patterns, preferences, and insights that help work effectively with the InuKings UI Kit codebase.
+
+## Component Structure
+
+- Each component has its own directory within `src/components/`
+- Component directories typically include:
+  - Main implementation file (ComponentName.tsx)
+  - Index file for exports (index.tsx)
+  - Type definitions (types.ts)
+  - Storybook stories (index.stories.tsx)
+  - Theme-specific styling when applicable (theme.ts)
+  - Styled sub-components when applicable (StyledComponentName.tsx)
+
+## Naming Conventions
+
+- PascalCase for component names and their files (e.g., `Button.tsx`, `CardHeader.tsx`)
+- camelCase for util functions and hooks
+- Component directories use PascalCase
+- Export named components rather than default exports for better tree-shaking
+- Type interfaces are usually named with pattern: `ComponentNameProps`
+- Enum-like constants use UPPERCASE (e.g., `VARIANT_NAMES`)
+
+## TypeScript Patterns
+
+- Props interfaces are exported for all components
+- Styled-components frequently use the `as` prop for polymorphic components
+- Styled-system is used for responsive props
+- Enums are typically created using "as const" pattern with type extraction:
+
+  ```typescript
+  export const variants = {
+    PRIMARY: "primary",
+    SECONDARY: "secondary",
+  } as const;
+
+  export type Variants = typeof variants[keyof typeof variants];
+  ```
+
+## Styling Patterns
+
+- Styled-components for component styling
+- Theme-based styling that pulls values from the theme object
+- Variants are implemented through props and theme values
+- Styled-system for spacing and responsive props
+- Components are designed to be responsive by default
+
+## Testing Approach
+
+- Jest and React Testing Library for unit tests
+- Tests typically verify:
+  - Component rendering
+  - Prop propagation
+  - Variant application
+  - Event handling
+
+## Storybook Usage
+
+- Each component should have Storybook stories
+- Stories should demonstrate:
+  - Default usage
+  - Different variants
+  - Responsive behavior
+  - Interactive examples
+
+## Development Workflow
+
+- Component creation follows these steps:
+  1. Define types and interfaces
+  2. Implement the component
+  3. Create Storybook stories
+  4. Write tests
+  5. Update exports in index files
+
+## Future Considerations
+
+- Package name should be updated to reflect InuKings branding
+- Theme colors will need customization for InuKings identity
+- React version dependencies may need updating (currently on React 17)
