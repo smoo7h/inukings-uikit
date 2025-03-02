@@ -1,0 +1,73 @@
+# Inukings UIKit Project Rules
+
+## File Structure Patterns
+
+- Component organization follows a consistent pattern:
+
+  - Each component has its own directory in `src/components/` or `src/widgets/`
+  - Component directories typically include:
+    - Main implementation file (ComponentName.tsx)
+    - Index file (index.tsx) for exports
+    - Types file (types.ts) for TypeScript interfaces
+    - Story file (index.stories.tsx) for Storybook documentation
+    - Theme file (theme.ts) for theme-specific styling (when applicable)
+    - Additional subcomponents as needed
+
+- Test files are stored in `src/__tests__/` mirroring the component structure
+
+## Naming Conventions
+
+- PascalCase for component names and component files
+- camelCase for variables, functions, and non-component files
+- Prefixing styled components with "Styled" (e.g., StyledButton)
+- Interface names often end with "Props" for component props
+
+## Component Patterns
+
+- Props commonly include:
+
+  - `as`: For component polymorphism
+  - `variant`: For visual variants
+  - `scale`: For size variations
+  - Standard HTML attributes passed through to underlying DOM elements
+
+- Styled-components patterns:
+  - Theme access via props
+  - Variant handling via props
+  - Responsive styling via theme breakpoints
+
+## Development Workflow
+
+- Component development typically follows:
+  1. Define types in types.ts
+  2. Implement styled components for visual elements
+  3. Implement the main component using styled components
+  4. Create storybook stories for documentation and testing
+  5. Create unit tests
+- Components typically have a base implementation and then variant implementations
+
+## Theming Approach
+
+- Theme is accessed via styled-components ThemeProvider
+- Color tokens are defined in theme files
+- Components adapt to light/dark themes automatically
+- Responsive breakpoints are defined in the theme
+
+## Testing Patterns
+
+- Tests focus on:
+  - Rendering with different props
+  - Checking for expected DOM elements
+  - Verifying user interactions
+  - Ensuring accessibility
+
+## Commit and Release Process
+
+- Conventional commits are enforced via commitlint
+- Release process uses np for version management
+
+## Project-Specific Knowledge
+
+- This is a fork of PancakeSwap UIKit, adapted for Inukings ecosystem
+- Version 0.10.2 as of initial documentation
+- The project aims to maintain a similar component API to the original while customizing for Inukings' needs
