@@ -59,13 +59,10 @@ function __rest(s, e) {
     return t;
 }
 
-/** @deprecated */
-function __spreadArrays() {
-    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
-    for (var r = Array(s), k = 0, i = 0; i < il; i++)
-        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
-            r[k] = a[j];
-    return r;
+function __spreadArray(to, from) {
+    for (var i = 0, il = from.length, j = to.length; i < il; i++, j++)
+        to[j] = from[i];
+    return to;
 }
 
 function __makeTemplateObject(cooked, raw) {
@@ -81,7 +78,7 @@ var rotate = styled.keyframes(templateObject_1 || (templateObject_1 = __makeTemp
 var spinStyle = styled.css(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  animation: ", " 2s linear infinite;\n"], ["\n  animation: ", " 2s linear infinite;\n"])), rotate);
 var Svg = styled__default['default'].svg(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  fill: ", ";\n  flex-shrink: 0;\n\n  ", "\n  ", "\n"], ["\n  fill: ", ";\n  flex-shrink: 0;\n\n  ", "\n  ", "\n"])), function (_a) {
     var theme = _a.theme, color = _a.color;
-    return getThemeValue("colors." + color, color)(theme);
+    return getThemeValue("colors.".concat(color), color)(theme);
 }, function (_a) {
     var spin = _a.spin;
     return spin && spinStyle;
@@ -116,7 +113,7 @@ var Icon$3 = function (props) {
 
 var getColor = function (_a) {
     var color = _a.color, theme = _a.theme;
-    return getThemeValue("colors." + color, color)(theme);
+    return getThemeValue("colors.".concat(color), color)(theme);
 };
 var getFontSize = function (_a) {
     var fontSize = _a.fontSize, small = _a.small;
@@ -127,7 +124,7 @@ var Text = styled__default['default'].div(templateObject_1$1 || (templateObject_
     return (bold ? 600 : 400);
 }, function (_a) {
     var textTransform = _a.textTransform;
-    return textTransform && "text-transform: " + textTransform + ";";
+    return textTransform && "text-transform: ".concat(textTransform, ";");
 }, styledSystem.space);
 Text.defaultProps = {
     color: "text",
@@ -159,7 +156,7 @@ var getDisabledStyles = function (_a) {
     if (isLoading === true) {
         return "\n      &:disabled,\n      &.button--disabled {\n        cursor: not-allowed;\n      }\n    ";
     }
-    return "\n    &:disabled,\n    &.button--disabled {\n      background-color: " + theme.colors.backgroundDisabled + ";\n      border-color: " + theme.colors.backgroundDisabled + ";\n      box-shadow: none;\n      color: " + theme.colors.textDisabled + ";\n      cursor: not-allowed;\n    }\n  ";
+    return "\n    &:disabled,\n    &.button--disabled {\n      background-color: ".concat(theme.colors.backgroundDisabled, ";\n      border-color: ").concat(theme.colors.backgroundDisabled, ";\n      box-shadow: none;\n      color: ").concat(theme.colors.textDisabled, ";\n      cursor: not-allowed;\n    }\n  ");
 };
 var removePointerEvents = function (_a) {
     var disabled = _a.disabled, as = _a.as;
@@ -356,7 +353,7 @@ var Icon$p = function (props) {
 
 var Icon$q = function (props) {
     return (React__default['default'].createElement(Svg, __assign({ viewBox: "0 0 32 32" }, props),
-        React__default['default'].createElement("image", { width: "32", height: "32", href: process.env.PUBLIC_URL + "/images/egg/logo.png" })));
+        React__default['default'].createElement("image", { width: "32", height: "32", href: "".concat(process.env.PUBLIC_URL, "/images/egg/logo.png") })));
 };
 
 var Icon$r = function (props) {
@@ -580,7 +577,7 @@ var IconLabel = styled__default['default'].div(templateObject_1$5 || (templateOb
 var withHandlerSpacing = 32 + 12 + 8; // button size + inner spacing + handler position
 var Details = styled__default['default'].div(templateObject_2$1 || (templateObject_2$1 = __makeTemplateObject(["\n  flex: 1;\n  padding-bottom: 12px;\n  padding-left: 12px;\n  padding-right: ", ";\n  padding-top: 12px;\n"], ["\n  flex: 1;\n  padding-bottom: 12px;\n  padding-left: 12px;\n  padding-right: ", ";\n  padding-top: 12px;\n"])), function (_a) {
     var hasHandler = _a.hasHandler;
-    return (hasHandler ? withHandlerSpacing + "px" : "12px");
+    return (hasHandler ? "".concat(withHandlerSpacing, "px") : "12px");
 });
 var CloseHandler = styled__default['default'].div(templateObject_3$1 || (templateObject_3$1 = __makeTemplateObject(["\n  border-radius: 0 16px 16px 0;\n  right: 8px;\n  position: absolute;\n  top: 8px;\n"], ["\n  border-radius: 0 16px 16px 0;\n  right: 8px;\n  position: absolute;\n  top: 8px;\n"])));
 var StyledAlert = styled__default['default'](Flex)(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n  position: relative;\n  background-color: ", ";\n  border-radius: 16px;\n  box-shadow: 0px 20px 36px -8px rgba(14, 14, 44, 0.1), 0px 1px 1px rgba(0, 0, 0, 0.05);\n"], ["\n  position: relative;\n  background-color: ", ";\n  border-radius: 16px;\n  box-shadow: 0px 20px 36px -8px rgba(14, 14, 44, 0.1), 0px 1px 1px rgba(0, 0, 0, 0.05);\n"])), function (_a) {
@@ -616,10 +613,10 @@ var StyledBreadcrumbs = styled__default['default'].ul(templateObject_2$2 || (tem
 var insertSeparators = function (items, separator) {
     return items.reduce(function (accum, item, index) {
         if (index === 0) {
-            return __spreadArrays(accum, [item]);
+            return __spreadArray(__spreadArray([], accum, true), [item]);
         }
-        return __spreadArrays(accum, [
-            React__default['default'].createElement(Separator, { "aria-hidden": true, key: "seperator-" + index }, separator),
+        return __spreadArray(__spreadArray([], accum, true), [
+            React__default['default'].createElement(Separator, { "aria-hidden": true, key: "seperator-".concat(index) }, separator),
             item,
         ]);
     }, []);
@@ -629,7 +626,7 @@ var Breadcrumbs = function (_a) {
     var _b = _a.separator, separator = _b === void 0 ? DefaultSeparator : _b, children = _a.children;
     var validItems = React.Children.toArray(children).filter(function (child) { return React.isValidElement(child); });
     var items = insertSeparators(validItems, separator);
-    return (React__default['default'].createElement(StyledBreadcrumbs, null, items.map(function (item, index) { return (React__default['default'].createElement("li", { key: "child-" + index }, item)); })));
+    return (React__default['default'].createElement(StyledBreadcrumbs, null, items.map(function (item, index) { return (React__default['default'].createElement("li", { key: "child-".concat(index) }, item)); })));
 };
 var templateObject_1$6, templateObject_2$2;
 
@@ -888,7 +885,7 @@ var BackgroundImage = function (_a) {
             entries.forEach(function (entry) {
                 var isIntersecting = entry.isIntersecting;
                 if (isIntersecting) {
-                    img.style.backgroundImage = "url(\"" + src + "\")";
+                    img.style.backgroundImage = "url(\"".concat(src, "\")");
                     observer.disconnect();
                 }
             });
@@ -1053,15 +1050,14 @@ Radio.defaultProps = {
 var templateObject_1$m;
 
 var getColor$1 = function (color, theme) {
-    return getThemeValue("colors." + color, color)(theme);
+    return getThemeValue("colors.".concat(color), color)(theme);
 };
 
 var getThemeTextColor = function (_a) {
     var outline = _a.outline, _b = _a.variant, variant = _b === void 0 ? "primary" : _b, theme = _a.theme;
     return outline ? getColor$1(variant, theme) : "#ffffff";
 };
-var StyledTag = styled__default['default'].div(templateObject_1$n || (templateObject_1$n = __makeTemplateObject(["\n  align-items: center;\n  background-color: ", ";\n  border: 2px solid ", ";\n  border-radius: 16px;\n  color: ", ";\n  display: inline-flex;\n  font-size: 14px;\n  font-weight: 400;\n  height: 28px;\n  line-height: 1.5;\n  padding: 0 8px;\n  white-space: nowrap;\n\n  svg {\n    fill: ", ";\n  }\n"], ["\n  align-items: center;\n  background-color: ",
-    ";\n  border: 2px solid ", ";\n  border-radius: 16px;\n  color: ", ";\n  display: inline-flex;\n  font-size: 14px;\n  font-weight: 400;\n  height: 28px;\n  line-height: 1.5;\n  padding: 0 8px;\n  white-space: nowrap;\n\n  svg {\n    fill: ", ";\n  }\n"])), function (_a) {
+var StyledTag = styled__default['default'].div(templateObject_1$n || (templateObject_1$n = __makeTemplateObject(["\n  align-items: center;\n  background-color: ", ";\n  border: 2px solid ", ";\n  border-radius: 16px;\n  color: ", ";\n  display: inline-flex;\n  font-size: 14px;\n  font-weight: 400;\n  height: 28px;\n  line-height: 1.5;\n  padding: 0 8px;\n  white-space: nowrap;\n\n  svg {\n    fill: ", ";\n  }\n"], ["\n  align-items: center;\n  background-color: ", ";\n  border: 2px solid ", ";\n  border-radius: 16px;\n  color: ", ";\n  display: inline-flex;\n  font-size: 14px;\n  font-weight: 400;\n  height: 28px;\n  line-height: 1.5;\n  padding: 0 8px;\n  white-space: nowrap;\n\n  svg {\n    fill: ", ";\n  }\n"])), function (_a) {
     var outline = _a.outline, theme = _a.theme, _b = _a.variant, variant = _b === void 0 ? "primary" : _b;
     return outline ? "transparent" : getColor$1(variant, theme);
 }, function (_a) {
@@ -1106,7 +1102,7 @@ var LinkExternal = function (_a) {
         React__default['default'].createElement(Icon$t, { color: "primary", ml: "4px" })));
 };
 
-var Bar = styled__default['default'].div(templateObject_1$p || (templateObject_1$p = __makeTemplateObject(["\n  position: absolute;\n  top: 0;\n  left: 0;\n  background-color: ", ";\n  border-top-left-radius: 32px;\n  border-bottom-left-radius: 32px;\n  height: 16px;\n  transition: width 200ms ease;\n"], ["\n  position: absolute;\n  top: 0;\n  left: 0;\n  background-color: ", ";\n  border-top-left-radius: 32px;\n  border-bottom-left-radius: 32px;\n  height: 16px;\n  transition: width 200ms ease;\n"])), function (props) { return (props.primary ? props.theme.colors.secondary : props.theme.colors.secondary + "80"); });
+var Bar = styled__default['default'].div(templateObject_1$p || (templateObject_1$p = __makeTemplateObject(["\n  position: absolute;\n  top: 0;\n  left: 0;\n  background-color: ", ";\n  border-top-left-radius: 32px;\n  border-bottom-left-radius: 32px;\n  height: 16px;\n  transition: width 200ms ease;\n"], ["\n  position: absolute;\n  top: 0;\n  left: 0;\n  background-color: ", ";\n  border-top-left-radius: 32px;\n  border-bottom-left-radius: 32px;\n  height: 16px;\n  transition: width 200ms ease;\n"])), function (props) { return (props.primary ? props.theme.colors.secondary : "".concat(props.theme.colors.secondary, "80")); });
 Bar.defaultProps = {
     primary: false,
 };
@@ -1134,10 +1130,10 @@ var stepGuard = function (step) {
 var Progress = function (_a) {
     var _b = _a.primaryStep, primaryStep = _b === void 0 ? 0 : _b, _c = _a.secondaryStep, secondaryStep = _c === void 0 ? null : _c, _d = _a.showProgressBunny, showProgressBunny = _d === void 0 ? false : _d;
     return (React__default['default'].createElement(StyledProgress, null,
-        showProgressBunny && (React__default['default'].createElement(ProgressBunnyWrapper, { style: { left: stepGuard(primaryStep) + "%" } },
+        showProgressBunny && (React__default['default'].createElement(ProgressBunnyWrapper, { style: { left: "".concat(stepGuard(primaryStep), "%") } },
             React__default['default'].createElement(Icon$A, null))),
-        React__default['default'].createElement(Bar, { primary: true, style: { width: stepGuard(primaryStep) + "%" } }),
-        secondaryStep ? React__default['default'].createElement(Bar, { style: { width: stepGuard(secondaryStep) + "%" } }) : null));
+        React__default['default'].createElement(Bar, { primary: true, style: { width: "".concat(stepGuard(primaryStep), "%") } }),
+        secondaryStep ? React__default['default'].createElement(Bar, { style: { width: "".concat(stepGuard(secondaryStep), "%") } }) : null));
 };
 
 var rotate$1 = styled.keyframes(templateObject_1$r || (templateObject_1$r = __makeTemplateObject(["\n  from {\n    transform: rotate(0deg);\n  }\n  to {\n    transform: rotate(360deg);\n  }\n"], ["\n  from {\n    transform: rotate(0deg);\n  }\n  to {\n    transform: rotate(360deg);\n  }\n"])));
@@ -1150,7 +1146,7 @@ var RotatingPancakeIcon = styled__default['default'](SpinnerIcon)(templateObject
 var Spinner = function (_a) {
     var _b = _a.size, size = _b === void 0 ? 128 : _b;
     return (React__default['default'].createElement(Container$1, null,
-        React__default['default'].createElement(RotatingPancakeIcon, { width: size * 0.5 + "px" })));
+        React__default['default'].createElement(RotatingPancakeIcon, { width: "".concat(size * 0.5, "px") })));
 };
 var templateObject_1$r, templateObject_2$6, templateObject_3$2;
 
@@ -1236,7 +1232,7 @@ var byTextDescending = function (getTextProperty) { return function (objectA, ob
 
 var sortByColumn = function (data, sortColumn, columns) {
     var isAscending = null;
-    var sortedRows = __spreadArrays(data);
+    var sortedRows = __spreadArray([], data);
     columns.forEach(function (column) {
         // if the row was found
         if (sortColumn === column.name) {
@@ -1287,7 +1283,7 @@ var createReducer = function () { return function (state, action) {
     var rowIds = {};
     switch (action.type) {
         case "SET_ROWS":
-            rows = __spreadArrays(action.data);
+            rows = __spreadArray([], action.data);
             // preserve sorting if a sort is already enabled when data changes
             if (state.sortColumn) {
                 rows = sortByColumn(action.data, state.sortColumn, state.columns);
@@ -1316,7 +1312,7 @@ var createReducer = function () { return function (state, action) {
             return __assign(__assign({}, state), { rows: getPaginatedData(state.originalRows, state.pagination.perPage, prevPage), pagination: __assign(__assign({}, state.pagination), { page: prevPage, canNext: prevPage * state.pagination.perPage < state.originalRows.length, canPrev: prevPage !== 1 }) });
         case "TOGGLE_SORT":
             if (!(action.columnName in state.columnsByName)) {
-                throw new Error("Invalid column, " + action.columnName + " not found");
+                throw new Error("Invalid column, ".concat(action.columnName, " not found"));
             }
             // loop through all columns and set the sort parameter to off unless
             // it's the specified column (only one column at a time for )
@@ -1420,24 +1416,18 @@ var createReducer = function () { return function (state, action) {
     }
 }; };
 var sortDataInOrder = function (data, columns) {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return data.map(function (row) {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         var newRow = {};
         columns.forEach(function (column) {
             if (!(column.name in row)) {
-                throw new Error("Invalid row data, " + column.name + " not found");
+                throw new Error("Invalid row data, ".concat(column.name, " not found"));
             }
             newRow[column.name] = row[column.name];
         });
         return newRow;
     });
 };
-var makeRender = function (
-// eslint-disable-next-line
-value, 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-render, row) {
+var makeRender = function (value, render, row) {
     return render ? function () { return render({ row: row, value: value }); } : function () { return value; };
 };
 var makeHeaderRender = function (label, render) {
@@ -1492,9 +1482,7 @@ var useTable = function (columns, data, options) {
             perPage: 10,
             canNext: true,
             canPrev: false,
-            // eslint-disable-next-line @typescript-eslint/no-empty-function
             nextPage: noop__default['default'],
-            // eslint-disable-next-line @typescript-eslint/no-empty-function
             prevPage: noop__default['default'],
         },
     }), state = _a[0], dispatch = _a[1];
@@ -1506,7 +1494,7 @@ var useTable = function (columns, data, options) {
         dispatch({ type: "SET_ROWS", data: tableData });
     }, [tableData]);
     var headers = React.useMemo(function () {
-        return __spreadArrays(state.columns.map(function (column) {
+        return __spreadArray([], state.columns.map(function (column) {
             var label = column.label ? column.label : column.name;
             return __assign(__assign({}, column), { render: makeHeaderRender(label, column.headerRender) });
         }));
@@ -1540,14 +1528,14 @@ var breakpointMap = {
     lg: 968,
     xl: 1080,
 };
-var breakpoints = Object.values(breakpointMap).map(function (breakpoint) { return breakpoint + "px"; });
+var breakpoints = Object.values(breakpointMap).map(function (breakpoint) { return "".concat(breakpoint, "px"); });
 var mediaQueries = {
-    xs: "@media screen and (min-width: " + breakpointMap.xs + "px)",
-    sm: "@media screen and (min-width: " + breakpointMap.sm + "px)",
-    md: "@media screen and (min-width: " + breakpointMap.md + "px)",
-    lg: "@media screen and (min-width: " + breakpointMap.lg + "px)",
-    xl: "@media screen and (min-width: " + breakpointMap.xl + "px)",
-    nav: "@media screen and (min-width: " + breakpointMap.lg + "px)",
+    xs: "@media screen and (min-width: ".concat(breakpointMap.xs, "px)"),
+    sm: "@media screen and (min-width: ".concat(breakpointMap.sm, "px)"),
+    md: "@media screen and (min-width: ".concat(breakpointMap.md, "px)"),
+    lg: "@media screen and (min-width: ".concat(breakpointMap.lg, "px)"),
+    xl: "@media screen and (min-width: ".concat(breakpointMap.xl, "px)"),
+    nav: "@media screen and (min-width: ".concat(breakpointMap.lg, "px)"),
 };
 var shadows = {
     level1: "0px 2px 12px -8px rgba(25, 19, 38, 0.1), 0px 1px 1px rgba(25, 19, 38, 0.05)",
@@ -1590,16 +1578,16 @@ var mediaQueries$1 = (function () {
         var _a, _b;
         // Largest size is just a min-width of second highest max-width
         if (index === Object.keys(breakpointMap).length - 1) {
-            return __assign(__assign({}, accum), (_a = {}, _a[size] = "(min-width: " + prevMinWidth + "px)", _a));
+            return __assign(__assign({}, accum), (_a = {}, _a[size] = "(min-width: ".concat(prevMinWidth, "px)"), _a));
         }
         var minWidth = prevMinWidth;
         var breakpoint = breakpointMap[size];
         // Min width for next iteration
         prevMinWidth = breakpoint + 1;
-        return __assign(__assign({}, accum), (_b = {}, _b[size] = "(min-width: " + minWidth + "px) and (max-width: " + breakpoint + "px)", _b));
+        return __assign(__assign({}, accum), (_b = {}, _b[size] = "(min-width: ".concat(minWidth, "px) and (max-width: ").concat(breakpoint, "px)"), _b));
     }, {});
 })();
-var getKey = function (size) { return "is" + size.charAt(0).toUpperCase() + size.slice(1); };
+var getKey = function (size) { return "is".concat(size.charAt(0).toUpperCase()).concat(size.slice(1)); };
 var useMatchBreakpoints = function () {
     var _a = React.useState(function () {
         return Object.keys(mediaQueries$1).reduce(function (accum, size) {
@@ -1657,21 +1645,21 @@ var createParticle = function (x, y, imgSrc, options) {
     var delay = Math.random() * 200;
     particle.style.backgroundRepeat = "no-repeat";
     particle.style.backgroundSize = "contain";
-    particle.style.backgroundImage = "url(" + imgSrc + ")";
+    particle.style.backgroundImage = "url(".concat(imgSrc, ")");
     particle.style.left = "0";
     particle.style.top = "0";
     particle.style.opacity = "0";
     particle.style.pointerEvents = "none";
     particle.style.position = "fixed";
-    particle.style.width = width + "px";
-    particle.style.height = height + "px";
+    particle.style.width = "".concat(width, "px");
+    particle.style.height = "".concat(height, "px");
     var animation = particle.animate([
         {
-            transform: "translate(-50%, -50%) translate(" + x + "px, " + y + "px) rotate(0deg)",
+            transform: "translate(-50%, -50%) translate(".concat(x, "px, ").concat(y, "px) rotate(0deg)"),
             opacity: 1,
         },
         {
-            transform: "translate(-50%, -50%) translate(" + (x + destinationX) + "px, " + (y + destinationY) + "px) rotate(" + rotation + "deg)",
+            transform: "translate(-50%, -50%) translate(".concat(x + destinationX, "px, ").concat(y + destinationY, "px) rotate(").concat(rotation, "deg)"),
             opacity: 0,
         },
     ], {
@@ -2259,7 +2247,7 @@ var MenuEntry = styled__default['default'].div(templateObject_3$6 || (templateOb
     return theme.colors.textSubtle;
 }, function (_a) {
     var isActive = _a.isActive, theme = _a.theme;
-    return (isActive ? "inset 4px 0px 0px " + theme.colors.primary : "none");
+    return (isActive ? "inset 4px 0px 0px ".concat(theme.colors.primary) : "none");
 }, function (_a) {
     var theme = _a.theme;
     return theme.colors.textSubtle;
@@ -2280,7 +2268,7 @@ var templateObject_1$z, templateObject_2$a, templateObject_3$6;
 var Container$2 = styled__default['default'].div(templateObject_1$A || (templateObject_1$A = __makeTemplateObject(["\n  display: flex;\n  flex-direction: column;\n  // Safari fix\n  flex-shrink: 0;\n"], ["\n  display: flex;\n  flex-direction: column;\n  // Safari fix\n  flex-shrink: 0;\n"])));
 var AccordionContent = styled__default['default'].div(templateObject_2$b || (templateObject_2$b = __makeTemplateObject(["\n  max-height: ", ";\n  transition: max-height 0.3s ease-out;\n  overflow: hidden;\n  border-color: ", ";\n  border-style: solid;\n  border-width: 1px;\n"], ["\n  max-height: ", ";\n  transition: max-height 0.3s ease-out;\n  overflow: hidden;\n  border-color: ", ";\n  border-style: solid;\n  border-width: 1px;\n"])), function (_a) {
     var isOpen = _a.isOpen, maxHeight = _a.maxHeight;
-    return (isOpen ? maxHeight + "px" : 0);
+    return (isOpen ? "".concat(maxHeight, "px") : 0);
 }, function (_a) {
     var isOpen = _a.isOpen, isPushed = _a.isPushed;
     return (isOpen && isPushed ? "rgba(133, 133, 133, 0.1)" : "transparent");
@@ -2359,7 +2347,7 @@ var PanelFooter = function (_a) {
         React__default['default'].createElement(SocialEntry, null,
             cakePriceUsd ? (React__default['default'].createElement(PriceLink, { href: priceLink, target: "_blank" },
                 React__default['default'].createElement(Icon$v, { width: "24px", mr: "8px" }),
-                React__default['default'].createElement(Text, { color: "textSubtle", bold: true }, "$" + cakePriceUsd.toFixed(3)))) : (React__default['default'].createElement(Skeleton, { width: 80, height: 24 })),
+                React__default['default'].createElement(Text, { color: "textSubtle", bold: true }, "$".concat(cakePriceUsd.toFixed(3))))) : (React__default['default'].createElement(Skeleton, { width: 80, height: 24 })),
             React__default['default'].createElement(Flex, null, socials.map(function (social, index) {
                 var Icon = Icons$1[social.icon];
                 var iconProps = { width: "24px", color: "textSubtle", style: { cursor: "pointer" } };
@@ -2388,7 +2376,7 @@ var StyledPanel = styled__default['default'].div(templateObject_1$D || (template
     return theme.nav.background;
 }, function (_a) {
     var isPushed = _a.isPushed;
-    return (isPushed ? SIDEBAR_WIDTH_FULL + "px" : 0);
+    return (isPushed ? "".concat(SIDEBAR_WIDTH_FULL, "px") : 0);
 }, function (_a) {
     var isPushed = _a.isPushed;
     return (isPushed ? "2px solid rgba(133, 133, 133, 0.1)" : 0);
@@ -2400,7 +2388,7 @@ var StyledPanel = styled__default['default'].div(templateObject_1$D || (template
     return theme.mediaQueries.nav;
 }, function (_a) {
     var isPushed = _a.isPushed;
-    return (isPushed ? SIDEBAR_WIDTH_FULL : SIDEBAR_WIDTH_REDUCED) + "px";
+    return "".concat(isPushed ? SIDEBAR_WIDTH_FULL : SIDEBAR_WIDTH_REDUCED, "px");
 });
 var Panel = function (props) {
     var isPushed = props.isPushed, showMenu = props.showMenu;
@@ -2509,7 +2497,7 @@ var WalletCard = function (_a) {
             login(walletConfig.connectorId);
             window.localStorage.setItem(localStorageKey, "1");
             onDismiss();
-        }, style: { justifyContent: "space-between" }, mb: mb, id: "wallet-connect-" + title.toLocaleLowerCase() },
+        }, style: { justifyContent: "space-between" }, mb: mb, id: "wallet-connect-".concat(title.toLocaleLowerCase()) },
         React__default['default'].createElement(Text, { bold: true, color: "primary", mr: "16px" }, title),
         React__default['default'].createElement(Icon, { width: "32px" })));
 };
@@ -2558,7 +2546,7 @@ var AccountModal = function (_a) {
     return (React__default['default'].createElement(Modal, { title: "Your wallet", onDismiss: onDismiss },
         React__default['default'].createElement(Text, { fontSize: "20px", bold: true, style: { whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "8px" } }, account),
         React__default['default'].createElement(Flex, { mb: "32px" },
-            React__default['default'].createElement(LinkExternal, { small: true, href: "https://scan.pulsechain.com/address/" + account, mr: "16px" }, "View on pulsescan"),
+            React__default['default'].createElement(LinkExternal, { small: true, href: "https://scan.pulsechain.com/address/".concat(account), mr: "16px" }, "View on pulsescan"),
             React__default['default'].createElement(CopyToClipboard, { toCopy: account }, "Copy Address")),
         React__default['default'].createElement(Flex, { justifyContent: "center" },
             React__default['default'].createElement(Button, { size: "sm", variant: "secondary", onClick: function () {
@@ -2578,7 +2566,7 @@ var useWalletModal = function (login, logout, account) {
 var UserBlock = function (_a) {
     var account = _a.account, login = _a.login, logout = _a.logout;
     var _b = useWalletModal(login, logout, account), onPresentConnectModal = _b.onPresentConnectModal, onPresentAccountModal = _b.onPresentAccountModal;
-    var accountEllipsis = account ? account.substring(0, 4) + "..." + account.substring(account.length - 4) : null;
+    var accountEllipsis = account ? "".concat(account.substring(0, 4), "...").concat(account.substring(account.length - 4)) : null;
     return (React__default['default'].createElement("div", null, account ? (React__default['default'].createElement(Button, { size: "sm", variant: "tertiary", onClick: function () {
             onPresentAccountModal();
         } }, accountEllipsis)) : (React__default['default'].createElement(Button, { size: "sm", onClick: function () {
@@ -2627,7 +2615,7 @@ var templateObject_1$G, templateObject_2$e;
 var Wrapper$1 = styled__default['default'].div(templateObject_1$H || (templateObject_1$H = __makeTemplateObject(["\n  position: relative;\n  width: 100%;\n"], ["\n  position: relative;\n  width: 100%;\n"])));
 var StyledNav = styled__default['default'].nav(templateObject_2$f || (templateObject_2$f = __makeTemplateObject(["\n  position: fixed;\n  top: ", ";\n  left: 0;\n  transition: top 0.2s;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding-left: 8px;\n  padding-right: 16px;\n  width: 100%;\n  height: ", "px;\n  background-color: ", ";\n  border-bottom: solid 2px rgba(133, 133, 133, 0.1);\n  z-index: 20;\n  transform: translate3d(0, 0, 0);\n"], ["\n  position: fixed;\n  top: ", ";\n  left: 0;\n  transition: top 0.2s;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding-left: 8px;\n  padding-right: 16px;\n  width: 100%;\n  height: ", "px;\n  background-color: ", ";\n  border-bottom: solid 2px rgba(133, 133, 133, 0.1);\n  z-index: 20;\n  transform: translate3d(0, 0, 0);\n"])), function (_a) {
     var showMenu = _a.showMenu;
-    return (showMenu ? 0 : "-" + MENU_HEIGHT + "px");
+    return (showMenu ? 0 : "-".concat(MENU_HEIGHT, "px"));
 }, MENU_HEIGHT, function (_a) {
     var theme = _a.theme;
     return theme.nav.background;
@@ -2635,13 +2623,13 @@ var StyledNav = styled__default['default'].nav(templateObject_2$f || (templateOb
 var BodyWrapper = styled__default['default'].div(templateObject_3$8 || (templateObject_3$8 = __makeTemplateObject(["\n  position: relative;\n  display: flex;\n"], ["\n  position: relative;\n  display: flex;\n"])));
 var Inner = styled__default['default'].div(templateObject_4$3 || (templateObject_4$3 = __makeTemplateObject(["\n  flex-grow: 1;\n  margin-top: ", ";\n  transition: margin-top 0.2s;\n  transform: translate3d(0, 0, 0);\n  ", " {\n    margin-left: ", ";\n  }\n"], ["\n  flex-grow: 1;\n  margin-top: ", ";\n  transition: margin-top 0.2s;\n  transform: translate3d(0, 0, 0);\n  ", " {\n    margin-left: ", ";\n  }\n"])), function (_a) {
     var showMenu = _a.showMenu;
-    return (showMenu ? MENU_HEIGHT + "px" : 0);
+    return (showMenu ? "".concat(MENU_HEIGHT, "px") : 0);
 }, function (_a) {
     var theme = _a.theme;
     return theme.mediaQueries.nav;
 }, function (_a) {
     var isPushed = _a.isPushed;
-    return (isPushed ? SIDEBAR_WIDTH_FULL : SIDEBAR_WIDTH_REDUCED) + "px";
+    return "".concat(isPushed ? SIDEBAR_WIDTH_FULL : SIDEBAR_WIDTH_REDUCED, "px");
 });
 var MobileOnlyOverlay = styled__default['default'](Overlay)(templateObject_5$1 || (templateObject_5$1 = __makeTemplateObject(["\n  position: fixed;\n  height: 100%;\n\n  ", " {\n    display: none;\n  }\n"], ["\n  position: fixed;\n  height: 100%;\n\n  ", " {\n    display: none;\n  }\n"])), function (_a) {
     var theme = _a.theme;
@@ -2770,7 +2758,7 @@ var ToastContainer = function (_a) {
         React__default['default'].createElement(reactTransitionGroup.TransitionGroup, null, toasts.map(function (toast, index) {
             var zIndex = (ZINDEX - index).toString();
             var top = TOP_POSITION + index * stackSpacing;
-            return (React__default['default'].createElement(Toast, { key: toast.id, toast: toast, onRemove: onRemove, ttl: ttl, style: { top: top + "px", zIndex: zIndex } }));
+            return (React__default['default'].createElement(Toast, { key: toast.id, toast: toast, onRemove: onRemove, ttl: ttl, style: { top: "".concat(top, "px"), zIndex: zIndex } }));
         }))));
 };
 var templateObject_1$J;
@@ -2827,7 +2815,7 @@ var light$1 = (_a$2 = {},
         background: "transparent",
         backgroundActive: "transparent",
         backgroundHover: "transparent",
-        border: "2px solid " + lightColors.primary,
+        border: "2px solid ".concat(lightColors.primary),
         borderColorHover: lightColors.primaryBright,
         boxShadow: "none",
         boxShadowActive: "none",
@@ -2865,8 +2853,8 @@ var light$1 = (_a$2 = {},
     },
     _a$2[SUBTLE] = {
         background: lightColors.textSubtle,
-        backgroundActive: lightColors.textSubtle + "D9",
-        backgroundHover: lightColors.textSubtle + "B3",
+        backgroundActive: "".concat(lightColors.textSubtle, "D9"),
+        backgroundHover: "".concat(lightColors.textSubtle, "B3"),
         border: 0,
         borderColorHover: "currentColor",
         boxShadow: "none",
@@ -2875,8 +2863,8 @@ var light$1 = (_a$2 = {},
     },
     _a$2[SUCCESS] = {
         background: lightColors.success,
-        backgroundActive: lightColors.success + "D9",
-        backgroundHover: lightColors.success + "B3",
+        backgroundActive: "".concat(lightColors.success, "D9"),
+        backgroundHover: "".concat(lightColors.success, "B3"),
         border: 0,
         borderColorHover: "currentColor",
         boxShadow: "none",

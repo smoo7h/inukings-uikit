@@ -2,6 +2,7 @@ import React from "react";
 import getExternalLinkProps from "../../util/getExternalLinkProps";
 import StyledButton from "./StyledButton";
 import { ButtonProps, variants, sizes } from "./types";
+import { SpaceProps } from "styled-system"; // or your styling library's types
 
 const Button: React.FC<ButtonProps> = ({ startIcon, endIcon, children, external, isLoading, disabled, ...props }) => {
   const internalProps = external ? getExternalLinkProps() : {};
@@ -12,12 +13,12 @@ const Button: React.FC<ButtonProps> = ({ startIcon, endIcon, children, external,
       {React.isValidElement(startIcon) &&
         React.cloneElement(startIcon, {
           mr: "0.5rem",
-        })}
+        } as SpaceProps)}
       {children}
       {React.isValidElement(endIcon) &&
         React.cloneElement(endIcon, {
           ml: "0.5rem",
-        })}
+        } as SpaceProps)}
     </StyledButton>
   );
 };
