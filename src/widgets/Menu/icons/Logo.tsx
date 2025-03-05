@@ -16,8 +16,8 @@ const Logo: React.FC<LogoProps> = ({ isDark, ...props }) => {
         height="26"
         href={
           isDark
-            ? process.env.PUBLIC_URL + "/images/egg/LogoTextNewDark.png"
-            : process.env.PUBLIC_URL + "/images/egg/LogoTextNewWhite.png"
+            ? process.env.PUBLIC_URL + "/images/tokens/LogoTextNewDark.png"
+            : process.env.PUBLIC_URL + "/images/tokens/LogoTextNewWhite.png"
         }
       />
     </Svg>

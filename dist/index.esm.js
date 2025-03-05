@@ -8,7 +8,7 @@ import throttle from 'lodash/throttle';
 import { Link as Link$1, NavLink, useLocation } from 'react-router-dom';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
-/*! *****************************************************************************
+/******************************************************************************
 Copyright (c) Microsoft Corporation.
 
 Permission to use, copy, modify, and/or distribute this software for any
@@ -46,16 +46,24 @@ function __rest(s, e) {
     return t;
 }
 
-function __spreadArray(to, from) {
-    for (var i = 0, il = from.length, j = to.length; i < il; i++, j++)
-        to[j] = from[i];
-    return to;
+function __spreadArray(to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
 }
 
 function __makeTemplateObject(cooked, raw) {
     if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
     return cooked;
 }
+typeof SuppressedError === "function" ? SuppressedError : function (error, suppressed, message) {
+    var e = new Error(message);
+    return e.name = "SuppressedError", e.error = error, e.suppressed = suppressed, e;
+};
 
 var getThemeValue = function (path, fallback) { return function (theme) {
     return get(theme, path, fallback);
@@ -340,7 +348,7 @@ var Icon$p = function (props) {
 
 var Icon$q = function (props) {
     return (React.createElement(Svg, __assign({ viewBox: "0 0 32 32" }, props),
-        React.createElement("image", { width: "32", height: "32", href: "".concat(process.env.PUBLIC_URL, "/images/egg/logo.png") })));
+        React.createElement("image", { width: "32", height: "32", href: "".concat(process.env.PUBLIC_URL, "/images/tokens/logo.png") })));
 };
 
 var Icon$r = function (props) {
@@ -397,7 +405,7 @@ var Icon$u = function (props) {
 
 var Icon$v = function (props) {
     return (React.createElement(Svg, __assign({ viewBox: "0 0 90 90" }, props),
-        React.createElement("image", { width: 90, height: 90, href: process.env.PUBLIC_URL + "/images/egg/9.png" })));
+        React.createElement("image", { width: 90, height: 90, href: process.env.PUBLIC_URL + "/images/tokens/toni9.png" })));
 };
 
 var Icon$w = function (props) {
@@ -600,12 +608,12 @@ var StyledBreadcrumbs = styled.ul(templateObject_2$2 || (templateObject_2$2 = __
 var insertSeparators = function (items, separator) {
     return items.reduce(function (accum, item, index) {
         if (index === 0) {
-            return __spreadArray(__spreadArray([], accum, true), [item]);
+            return __spreadArray(__spreadArray([], accum, true), [item], false);
         }
         return __spreadArray(__spreadArray([], accum, true), [
             React.createElement(Separator, { "aria-hidden": true, key: "seperator-".concat(index) }, separator),
             item,
-        ]);
+        ], false);
     }, []);
 };
 var DefaultSeparator = React.createElement(Icon$i, { color: "currentColor", width: "24px" });
@@ -1126,7 +1134,7 @@ var Progress = function (_a) {
 var rotate$1 = keyframes(templateObject_1$r || (templateObject_1$r = __makeTemplateObject(["\n  from {\n    transform: rotate(0deg);\n  }\n  to {\n    transform: rotate(360deg);\n  }\n"], ["\n  from {\n    transform: rotate(0deg);\n  }\n  to {\n    transform: rotate(360deg);\n  }\n"])));
 var SpinnerIcon = function (props) {
     return (React.createElement(Svg, __assign({ viewBox: "0 0 96 96" }, props),
-        React.createElement("image", { width: "96", height: "96", href: process.env.PUBLIC_URL + "/images/egg/9.png" })));
+        React.createElement("image", { width: "96", height: "96", href: process.env.PUBLIC_URL + "/images/tokens/toni9.png" })));
 };
 var Container$1 = styled.div(templateObject_2$6 || (templateObject_2$6 = __makeTemplateObject(["\n  position: relative;\n"], ["\n  position: relative;\n"])));
 var RotatingPancakeIcon = styled(SpinnerIcon)(templateObject_3$2 || (templateObject_3$2 = __makeTemplateObject(["\n  position: absolute;\n  top: 0;\n  left: 0;\n  animation: ", " 2s linear infinite;\n  transform: translate3d(0, 0, 0);\n"], ["\n  position: absolute;\n  top: 0;\n  left: 0;\n  animation: ", " 2s linear infinite;\n  transform: translate3d(0, 0, 0);\n"])), rotate$1);
@@ -1219,7 +1227,7 @@ var byTextDescending = function (getTextProperty) { return function (objectA, ob
 
 var sortByColumn = function (data, sortColumn, columns) {
     var isAscending = null;
-    var sortedRows = __spreadArray([], data);
+    var sortedRows = __spreadArray([], data, true);
     columns.forEach(function (column) {
         // if the row was found
         if (sortColumn === column.name) {
@@ -1270,7 +1278,7 @@ var createReducer = function () { return function (state, action) {
     var rowIds = {};
     switch (action.type) {
         case "SET_ROWS":
-            rows = __spreadArray([], action.data);
+            rows = __spreadArray([], action.data, true);
             // preserve sorting if a sort is already enabled when data changes
             if (state.sortColumn) {
                 rows = sortByColumn(action.data, state.sortColumn, state.columns);
@@ -1484,7 +1492,7 @@ var useTable = function (columns, data, options) {
         return __spreadArray([], state.columns.map(function (column) {
             var label = column.label ? column.label : column.name;
             return __assign(__assign({}, column), { render: makeHeaderRender(label, column.headerRender) });
-        }));
+        }), true);
     }, [state.columns]);
     useEffect(function () {
         if (options && options.filter) {
@@ -1864,8 +1872,8 @@ var Logo = function (_a) {
     var isDark = _a.isDark, props = __rest(_a, ["isDark"]);
     return (React.createElement(Svg, __assign({ viewBox: "0 0 205 26" }, props),
         React.createElement("image", { width: "205", height: "26", href: isDark
-                ? process.env.PUBLIC_URL + "/images/egg/LogoTextNewDark.png"
-                : process.env.PUBLIC_URL + "/images/egg/LogoTextNewWhite.png" })));
+                ? process.env.PUBLIC_URL + "/images/tokens/LogoTextNewDark.png"
+                : process.env.PUBLIC_URL + "/images/tokens/LogoTextNewWhite.png" })));
 };
 
 var Icon$Q = function (props) {

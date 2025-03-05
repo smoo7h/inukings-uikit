@@ -59,7 +59,7 @@
     "styled-components": "^5.2.0",
     "themeprovider-storybook": "^1.6.4",
     "ts-jest": "^26.5.0",
-    "tslib": "^2.0.3",
+    "tslib": "^2.5.0",
     "typescript": "5.0.4"
   },
   "peerDependencies": {
