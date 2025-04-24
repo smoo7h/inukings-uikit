@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { ColumnType, DataType, UseTableReturnType, UseTableOptionsType } from "./types";
-export declare const makeRender: <T extends DataType>(value: any, render: (({ value: val, row }: {
+export declare const makeRender: <T extends DataType>(value: any, render: (({ value, row }: {
     value: any;
     row: T;
 }) => ReactNode) | undefined, row: T) => (() => React.ReactNode);
